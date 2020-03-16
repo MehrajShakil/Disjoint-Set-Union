@@ -1,9 +1,10 @@
 //Bismillahhir-Rahmanir-Rahim
 //copy from Shuvro Sarker.
-
+//few update also...
 void makeSet(int n)
 {
     parent[n]=n;
+    Size[n] = 1;
 }
 
 int Find(int reprasentative)
@@ -17,13 +18,18 @@ int Find(int reprasentative)
 
 void Union(int a,int b)
 {
-    int u = Find(a);
-    int v = Find(b);
-    if(u == v)
+    a = Find(a);
+    b = Find(b);
+    if(a == b)
     {
         printf("Frnds");
     }
-    else parent[u]=v;
+    else {
+            if (Size[a] < Size[b])
+                swap(a, b);
+                parent[b]=a;
+                Size[a]+=Size[b];
+          }
 }
 
 int main()
